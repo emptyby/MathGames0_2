@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MathGames</string>
+    <string name="multi">Обучение</string>
+    <string name="back">Назад</string>
+    <string name="press_exit">Нажмите ещё раз что бы выйти</string>
+    <string name="level">Уровень: </string>
+    <string name="textcontinue">Продолжить</string>
+    <string name="level1">Уровень 1</string>
+
+</resources>
