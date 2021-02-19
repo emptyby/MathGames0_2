@@ -1,19 +1,19 @@
 package lagames.com.mathgames;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private long backPressedTime;
     private Toast backToast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,32 +21,29 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonStart = findViewById((R.id.buttonMulti));
 
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(MainActivity.this, GameLavels.class);
-                    startActivity(intent);
-                    finish();
-                }catch (Exception e){
-
-                }
+        buttonStart.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(MainActivity.this, GameLevels.class);
+                startActivity(intent);
+                finish();
+            } catch (Exception ignored) {
             }
         });
 
         Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
+
     @Override
     public void onBackPressed() {
-       if(backPressedTime + 2000 > System.currentTimeMillis()){
-           backToast.cancel();
-           super.onBackPressed();
-           return;
-       } else {
-           backToast=Toast.makeText(getBaseContext(), R.string.press_exit, Toast.LENGTH_SHORT);
-           backToast.show();
-       }
-       backPressedTime = System.currentTimeMillis();
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), R.string.press_exit, Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 }
